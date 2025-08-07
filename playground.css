@@ -1,0 +1,99 @@
+.board-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  text-align: center;
+}
+
+#sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 48px);
+  grid-template-rows: repeat(9, 48px);
+  border: 3px solid black;
+  margin: auto;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+#sudoku-board .cell {
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 48px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* Thicker borders between 3x3 boxes */
+.cell:nth-child(3n) {
+  border-right: 3px solid black;
+}
+
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+46):nth-child(-n+54),
+.cell:nth-child(n+73):nth-child(-n+81) {
+  border-bottom: 3px solid black;
+}
+
+.cell:nth-child(1) {
+  border-top: 3px solid black;
+}
+
+.cell:nth-child(9n+1) {
+  border-left: 3px solid black;
+}
+
+/* Locked (pre-filled) cells */
+.cell.locked {
+  background-color: #eee;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Optional highlight for selected cell */
+.cell.selected {
+  background-color: #cceeff;
+}
+
+#number-pad {
+  display: grid;
+  grid-template-columns: repeat(5, 48px);
+  gap: 10px;
+  justify-content: center;
+}
+
+#number-pad button {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  transition: background-color 0.2s;
+}
+
+#number-pad button:hover {
+  background-color: #f2f2f2;
+}
+
+.cell.correct {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.cell.wrong {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.cell.invalid {
+  background-color: #fff3cd;
+  color: #856404;
+}
